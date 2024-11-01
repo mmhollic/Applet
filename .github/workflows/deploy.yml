@@ -1,0 +1,34 @@
+name: Deploy to Tsuru
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch. Change this as needed.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Tsuru CLI
+        run: |
+          curl -fsSL https://github.com/tsuru/tsuru-client/releases/latest/download/tsuru -o tsuru
+          chmod +x tsuru
+          sudo mv tsuru /usr/local/bin/
+
+      - name: Authenticate with Tsuru
+        env:
+          TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
+          TSURU_HOST: ${{ secrets.TSURU_HOST }}
+        run: |
+          tsuru target-add github-action $TSURU_HOST --set-current
+          echo $TSURU_TOKEN | tsuru login --token
+
+      - name: Deploy to Tsuru
+        env:
+          TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
+        run: |
+          tsuru app-deploy . -a myapp -y -m "GitHub Actions deployment"
