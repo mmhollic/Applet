@@ -12,6 +12,6 @@ public class MyApplet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("hello");
         resp.setContentType("text/html");
-        resp.getWriter().write("Hello world second server");
+        resp.getWriter().write("Hello world Tsuru attempts");
     }
 }
