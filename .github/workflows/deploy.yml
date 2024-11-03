@@ -24,8 +24,8 @@ jobs:
           TSURU_HOST: ${{ secrets.TSURU_HOST }}
         run: |
           echo "Target and token"
-          echo $TSURU_TARGET
-          echo $TSURU_TOKEN
+          echo ${{ secrets.TSURU_TOKEN }}
+          echo ${{ secrets.TSURU_HOST }}
           echo "Printed"
           tsuru target-add default https://impaas.uk -s
           tsuru login --token $TSURU_TOKEN
