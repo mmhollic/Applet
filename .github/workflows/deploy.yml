@@ -28,10 +28,7 @@ jobs:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
           TSURU_HOST: ${{ secrets.TSURU_HOST }}
         run: |
-          echo "Target and token"
-          echo ${{ secrets.TSURU_TOKEN }}
-          echo ${{ secrets.TSURU_HOST }}
-          echo "Printed"
+          echo "TSURU_TOKEN=${{ secrets.TSURU_TOKEN }}" >> $GITHUB_ENV
           tsuru target-add default https://impaas.uk -s
           echo "Authenticated with Tsuru"
 
