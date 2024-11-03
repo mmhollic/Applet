@@ -37,9 +37,9 @@ jobs:
 
       - name: Show info
         env:
-          TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
+          TSURU_TOKEN: 47b30d0c60f748c68779d61a04ab78fb1c4a7f44c50abb0f495e28cffb20a891
         run: |
-          echo "TSURU_TOKEN=${{ secrets.TSURU_TOKEN }}" >> $GITHUB_ENV
+          echo "TSURU_TOKEN=47b30d0c60f748c68779d61a04ab78fb1c4a7f44c50abb0f495e28cffb20a891" >> $GITHUB_ENV
           tsuru app-info -a applet
 
       - name: Deploy to Tsuru
