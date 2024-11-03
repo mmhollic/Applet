@@ -23,7 +23,7 @@ jobs:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
           TSURU_HOST: ${{ secrets.TSURU_HOST }}
         run: |
-          tsuru target-add my-target $TSURU_TARGET --set-current
+          tsuru target-add default $TSURU_TARGET --set-current
           tsuru login --token $TSURU_TOKEN
           echo "Authenticated with Tsuru"
 
