@@ -31,11 +31,13 @@ jobs:
           echo "TSURU_TOKEN=${{ secrets.TSURU_TOKEN }}" >> $GITHUB_ENV
           tsuru target-add default https://impaas.uk -s
           echo "Authenticated with Tsuru"
+      - name: Rename war file
+        run: |
+          mv ./build/libs/Applet-1.0-SNAPSHOT.war ./ROOT.war
 
       - name: Deploy to Tsuru
         env:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
         run: |
-          mv ./build/libs/Applet-1.0-SNAPSHOT.war ./ROOT.war
           tsuru app-info -a applet
           tsuru app-deploy -a applet ROOT.war
