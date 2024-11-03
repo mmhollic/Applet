@@ -34,4 +34,5 @@ jobs:
         env:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
         run: |
+          mv ./build/libs/Applet-1.0-SNAPSHOT.war ./ROOT.war
           tsuru app-deploy -a applet ROOT.war
