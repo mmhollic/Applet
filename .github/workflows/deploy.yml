@@ -28,7 +28,6 @@ jobs:
           echo ${{ secrets.TSURU_HOST }}
           echo "Printed"
           tsuru target-add default https://impaas.uk -s
-          tsuru login
           echo "Authenticated with Tsuru"
 
       - name: Deploy to Tsuru
