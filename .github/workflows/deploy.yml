@@ -15,9 +15,8 @@ jobs:
 
       - name: Install Tsuru CLI
         run: |
-          curl -fsSL https://github.com/tsuru/tsuru-client/releases/latest/download/tsuru -o tsuru
-          chmod +x tsuru
-          sudo mv tsuru /usr/local/bin/
+          curl -fsSL https://raw.githubusercontent.com/tsuru/tsuru-client/master/install.sh | sh
+          echo "Tsuru CLI installed"
 
       - name: Authenticate with Tsuru
         env:
