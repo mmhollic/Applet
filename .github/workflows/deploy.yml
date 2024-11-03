@@ -38,9 +38,8 @@ jobs:
       - name: Show info
         env:
           TSURU_HOST: "https://impaas.uk"
-          TSURU_TOKEN: "47b30d0c60f748c68779d61a04ab78fb1c4a7f44c50abb0f495e28cffb20a891"
+          TSURU_TOKEN: "ba5b475307064346015ccfbeaa7662a78a13d7af47167993b574a8f17d7af4a2"
         run: |
-          echo "TSURU_TOKEN=47b30d0c60f748c68779d61a04ab78fb1c4a7f44c50abb0f495e28cffb20a891" >> $GITHUB_ENV
           tsuru app-info -a applet
 
       - name: Deploy to Tsuru
