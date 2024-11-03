@@ -29,7 +29,7 @@ jobs:
           TSURU_HOST: ${{ secrets.TSURU_HOST }}
         run: |
           echo "TSURU_TOKEN=${{ secrets.TSURU_TOKEN }}" >> $GITHUB_ENV
-          tsuru target-add default https://impaas.uk -s
+          tsuru target-add default $TSURU_HOST -s
 
       - name: Rename war file
         run: |
