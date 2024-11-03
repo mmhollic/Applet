@@ -23,6 +23,10 @@ jobs:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
           TSURU_HOST: ${{ secrets.TSURU_HOST }}
         run: |
+          echo "Target and token"
+          echo $TSURU_TARGET
+          echo $TSURU_TOKEN
+          echo "Printed"
           tsuru target-add default $TSURU_TARGET -s
           tsuru login --token $TSURU_TOKEN
           echo "Authenticated with Tsuru"
