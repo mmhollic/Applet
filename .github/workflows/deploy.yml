@@ -23,20 +23,21 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/tsuru/tsuru-client/master/install.sh | sh
           echo "Tsuru CLI installed"
 
-      - name: Authenticate with Tsuru
+      - name: Add Target
         env:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
           TSURU_HOST: ${{ secrets.TSURU_HOST }}
         run: |
           echo "TSURU_TOKEN=${{ secrets.TSURU_TOKEN }}" >> $GITHUB_ENV
           tsuru target-add default https://impaas.uk -s
-          echo "Authenticated with Tsuru"
+
       - name: Rename war file
         run: |
           mv ./build/libs/Applet-1.0-SNAPSHOT.war ./ROOT.war
 
       - name: Show info
         env:
+          TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
           TSURU_HOST: "https://impaas.uk"
         run: |
           tsuru app-info -a applet
