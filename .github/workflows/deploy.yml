@@ -15,6 +15,7 @@ jobs:
 
       - name: Build
         run: |
+          chmod +x gradlew
           ./gradlew build
 
       - name: Install Tsuru CLI
