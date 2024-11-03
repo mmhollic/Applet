@@ -36,7 +36,10 @@ jobs:
           mv ./build/libs/Applet-1.0-SNAPSHOT.war ./ROOT.war
 
       - name: Show info
+        env:
+          TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
         run: |
+          echo "TSURU_TOKEN=${{ secrets.TSURU_TOKEN }}" >> $GITHUB_ENV
           tsuru app-info -a applet
 
       - name: Deploy to Tsuru
