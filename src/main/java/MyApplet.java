@@ -11,6 +11,6 @@ import java.io.IOException;
 public class MyApplet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        resp.getWriter().write("Hello world Tsuru attempts");
+        resp.getWriter().write("Hello world Tsuru attempts works");
     }
 }
