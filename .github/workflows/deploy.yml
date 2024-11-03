@@ -27,7 +27,7 @@ jobs:
           echo $TSURU_TARGET
           echo $TSURU_TOKEN
           echo "Printed"
-          tsuru target-add default $TSURU_TARGET -s
+          tsuru target-add default https://impaas.uk -s
           tsuru login --token $TSURU_TOKEN
           echo "Authenticated with Tsuru"
 
