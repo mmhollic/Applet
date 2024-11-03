@@ -28,10 +28,11 @@ jobs:
           echo ${{ secrets.TSURU_HOST }}
           echo "Printed"
           tsuru target-add default https://impaas.uk -s
+          tsuru login
           echo "Authenticated with Tsuru"
 
       - name: Deploy to Tsuru
         env:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
         run: |
-          tsuru app-deploy . -a applet -y -m "GitHub Actions deployment"
+          tsuru app-deploy -a applet ROOT.war
