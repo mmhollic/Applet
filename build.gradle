@@ -33,6 +33,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     // https://mvnrepository.com/artifact/org.mockito/mockito-core
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.14.2'
+// https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '3.0'
 
 
 }
