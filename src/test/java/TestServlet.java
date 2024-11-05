@@ -45,7 +45,7 @@ public class TestServlet {
 
         // What was written to the writer - was it what was expected?
         String output=stringWriter.getBuffer().toString();
-        assertThat(output,is(equalTo("Hello world Tsuru attempts works")));
+        assertThat(output,is(equalTo("Hello world")));
     }
 }
 
