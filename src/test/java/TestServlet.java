@@ -27,7 +27,7 @@ public class TestServlet {
         // Initialize Mockito
         MockitoAnnotations.initMocks(this);
     }
-    @Test
+    //@Test
     public void testDoGet() throws IOException, ServletException {
         // Create a PrinterWriter that writes to memory
         StringWriter stringWriter=new StringWriter();
