@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class MyApplet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        String dbUrl = "jdbc:postgresql://postgres:4methyst@172.22.141.28:5432";
+        String dbUrl = "jdbc:postgresql://postgres:4methyst@172.22.141.28:5432/postgres";
         //String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
         Connection conn=null;
         try {
