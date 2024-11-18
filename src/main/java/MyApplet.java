@@ -12,13 +12,13 @@ import java.sql.Statement;
 public class MyApplet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        String dbUrl = "jdbc:postgresql://mmholl:mmholl@172.22.141.28:5432/mmholl_db";
+        String dbUrl = "jdbc:postgresql://172.22.141.28:5432";
         Connection conn=null;
         try {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
             resp.getWriter().write("Driver registered");
-            conn= DriverManager.getConnection(dbUrl);
+            conn= DriverManager.getConnection(dbUrl,"mmholl","mmholl");
             Statement s=conn.createStatement();
             String sqlStr = "create table patients (\n" +
                     "    id SERIAL PRIMARY KEY,\n" +
