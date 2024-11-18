@@ -12,14 +12,14 @@ import java.sql.Statement;
 public class MyApplet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        String dbUrl = "jdbc:postgresql://postgres:4methyst@172.22.141.28:5432/postgres";
+        String dbUrl = "jdbc:postgresql://172.22.141.28:5432/postgres";
         //String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
         Connection conn=null;
         try {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
             resp.getWriter().write("Driver registered");
-            conn= DriverManager.getConnection(dbUrl);
+            conn= DriverManager.getConnection(dbUrl,"postgres","4methyst");
             /*Statement s=conn.createStatement();
             String sqlStr = "create table patients (\n" +
                     "    id SERIAL PRIMARY KEY,\n" +
@@ -30,9 +30,9 @@ public class MyApplet extends HttpServlet {
             s.execute(sqlStr);
 
             sqlStr = "insert into patients (familyname,givenname,phonenumber) values('Jones','Bill','07755678899');";
-            s.execute(sqlStr);*/
+            s.execute(sqlStr);
 
-            //s.close();
+            s.close();*/
             conn.close();
 
         } catch (Exception e) {
