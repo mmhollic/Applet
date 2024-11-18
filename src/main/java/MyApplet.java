@@ -18,7 +18,7 @@ public class MyApplet extends HttpServlet {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
             resp.getWriter().write("Driver registered");
-            conn= DriverManager.getConnection(dbUrl);
+            conn= DriverManager.getConnection(dbUrl,"mmholl", "mmholl");
             Statement s=conn.createStatement();
             String sqlStr = "create table patients (\n" +
                     "    id SERIAL PRIMARY KEY,\n" +
