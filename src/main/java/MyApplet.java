@@ -13,7 +13,7 @@ public class MyApplet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         //String dbUrl = "jdbc:postgresql://172.22.141.28:5432/postgres";
-        String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
+        String dbUrl = "ok print jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
         Connection conn=null;
         try {
             // Registers the driver
