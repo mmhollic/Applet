@@ -38,4 +38,4 @@ jobs:
         env:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
         run: |
-          tsuru app-deploy -a applet ROOT.war
+          tsuru app-deploy -a bioeng-mmholl-app ROOT.war
