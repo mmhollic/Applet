@@ -12,15 +12,15 @@ import java.sql.Statement;
 public class MyApplet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        String dbUrl = "jdbc:postgresql://172.22.141.28:5432/postgres";
-        //String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
+        //String dbUrl = "jdbc:postgresql://172.22.141.28:5432/postgres";
+        String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
         Connection conn=null;
         try {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
             resp.getWriter().write("Driver registered");
-            conn= DriverManager.getConnection(dbUrl,"postgres","4methyst");
-            /*Statement s=conn.createStatement();
+            conn= DriverManager.getConnection(dbUrl,System.getenv("PGUSER"),System.getenv("PGPASSWORD"));
+            Statement s=conn.createStatement();
             String sqlStr = "create table patients (\n" +
                     "    id SERIAL PRIMARY KEY,\n" +
                     "    familyname varchar(128) NOT NULL,\n" +
@@ -29,10 +29,15 @@ public class MyApplet extends HttpServlet {
                     ");\n";
             s.execute(sqlStr);
 
-            sqlStr = "insert into patients (familyname,givenname,phonenumber) values('Jones','Bill','07755678899');";
+            sqlStr = "insert into patients (familyname,givenname,phonenumber) values('Smith','Gina','0745633899');";
             s.execute(sqlStr);
-
-            s.close();*/
+            sqlStr = "insert into patients (familyname,givenname,phonenumber) values('Holloway','Nettles','0778443899');";
+            s.execute(sqlStr);
+            sqlStr = "insert into patients (familyname,givenname,phonenumber) values('Holloway','Martin','0749722099');";
+            s.execute(sqlStr);
+            sqlStr = "insert into patients (familyname,givenname,phonenumber) values('Fellow','Johnny','0745622453');";
+            s.execute(sqlStr);
+            s.close();
             conn.close();
 
         } catch (Exception e) {
@@ -40,6 +45,6 @@ public class MyApplet extends HttpServlet {
         }
 
 
-        resp.getWriter().write("Hello world");
+        resp.getWriter().write("Hello world "+dbUrl);
     }
 }
