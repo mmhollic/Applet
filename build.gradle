@@ -36,7 +36,7 @@ dependencies {
 // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
     testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '3.0'
     runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
-
+    implementation group: 'com.google.code.gson', name:'gson', version: '2.7'
 
 }
 test {

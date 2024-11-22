@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -6,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 @WebServlet(urlPatterns={"/patients","/doctors"},loadOnStartup = 1)
 public class MyApplet extends HttpServlet {
@@ -22,7 +26,9 @@ public class MyApplet extends HttpServlet {
 
             conn= DriverManager.getConnection(dbUrl,System.getenv("PGUSER"),System.getenv("PGPASSWORD"));
             Statement s=conn.createStatement();
-            String sqlStr = "create table patients (\n" +
+            String sqlStr ="select * from patients where true";
+
+             /*       String sqlStr = "create table patients (\n" +
                     "    id SERIAL PRIMARY KEY,\n" +
                     "    familyname varchar(128) NOT NULL,\n" +
                     "    givenname varchar(128) NOT NULL,\n" +
@@ -37,15 +43,26 @@ public class MyApplet extends HttpServlet {
             sqlStr = "insert into patients (familyname,givenname,phonenumber) values('Holloway','Martin','0749722099');";
             s.execute(sqlStr);
             sqlStr = "insert into patients (familyname,givenname,phonenumber) values('Fellow','Johnny','0745622453');";
-            s.execute(sqlStr);
+*/
+            ResultSet rs=s.executeQuery(sqlStr);
             s.close();
             conn.close();
+            ArrayList<Patient> pats=new ArrayList<>();
+            Gson gson=new Gson();
+            while(rs.next()){
+                Patient p=new Patient(rs.getString("givenname")+" "+rs.getString("familyname"),rs.getString("phonenumber"));
+                pats.add(p);
+            }
+
+            String jsonString = gson.toJson(pats);
+            resp.getWriter().write(jsonString);
 
         } catch (Exception e) {
+            resp.setStatus(502);
             resp.getWriter().write("Exception"+e.getMessage());
         }
 
 
-        resp.getWriter().write("Hello world "+dbUrl);
+
     }
 }
