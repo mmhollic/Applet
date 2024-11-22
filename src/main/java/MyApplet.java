@@ -19,6 +19,8 @@ public class MyApplet extends HttpServlet {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
             resp.getWriter().write("Driver registered");
+            resp.getWriter().write(System.getenv("PGUSER"));
+            resp.getWriter().write(System.getenv("PGPASSWORD"));
             conn= DriverManager.getConnection(dbUrl,System.getenv("PGUSER"),System.getenv("PGPASSWORD"));
             Statement s=conn.createStatement();
             String sqlStr = "create table patients (\n" +
