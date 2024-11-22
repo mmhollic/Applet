@@ -22,7 +22,7 @@ public class MyApplet extends HttpServlet {
         try {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
-            resp.getWriter().write("Driver registered");
+
 
             conn= DriverManager.getConnection(dbUrl,System.getenv("PGUSER"),System.getenv("PGPASSWORD"));
             Statement s=conn.createStatement();
